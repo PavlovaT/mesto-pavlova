@@ -1,0 +1,12 @@
+.element__logo-like {
+    width: 22px;
+    height: 19px;
+}
+
+.element__logo-like:hover {
+    opacity: 0.5;
+}
+
+.element__logo-like:active {
+    fill: #000000;
+}
