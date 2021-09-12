@@ -9,6 +9,7 @@
     height: 50px;
     margin: 48px auto 37px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .popup__button-save:hover {

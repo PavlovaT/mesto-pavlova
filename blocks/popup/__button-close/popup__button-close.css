@@ -2,8 +2,9 @@
     width: 32px;
     height: 32px;
     position: absolute;
-    right: -16px;
-    top: -16px;
+    right: -32px;
+    top: -32px;
+    cursor: pointer;
 }
 
 .popup__button-close:hover {
@@ -14,7 +15,7 @@
     .popup__button-close {
         width: 20px;
         height: 20px;
-        top: -16px;
-        right: ;
+        top: -32px;
+        right: 0;
     }
 }

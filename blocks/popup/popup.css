@@ -5,8 +5,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    /*display: none; */
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
