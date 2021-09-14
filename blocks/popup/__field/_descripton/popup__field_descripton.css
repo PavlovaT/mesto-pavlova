@@ -1,0 +1,9 @@
+.popup__field_descripton {
+    margin: 30px auto 0;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__field_descripton {
+        margin: 30px auto 0;
+    }
+}

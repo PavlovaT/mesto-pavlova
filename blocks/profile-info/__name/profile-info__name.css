@@ -1,12 +1,15 @@
 .profile-info__name {
-    width: 294px;
-    font-family: Inter;
+    max-width: 294px;
+    width: 100%;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
     line-height: 48px;
     margin: 0 16px 0 0;
-    height: 39px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
 }
 @media screen and (max-width: 920px) {
     .profile-info__name {
@@ -17,10 +20,10 @@
 
 @media screen and (max-width: 748px) {
     .profile-info__name {
+        max-width: 189px;
         font-size: 27px;
         line-height: 33px;
         text-align: center;
         margin: 0 auto 14px;
-        height: 26px;
     }
 }
