@@ -1,7 +1,7 @@
 .element__group-title {
     width: 246px;
     margin: 25px 15px 31px 21px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 22px;
     align-items: center;
 }

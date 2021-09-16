@@ -1,9 +1,10 @@
 .element__logo-like {
     width: 22px;
     height: 19px;
-    background-color: transparent;
+    background-color: white;
     border: none;
     padding: 0;
+    background-image: url(../../../image/Like.svg);
 }
 
 .element__logo-like:hover {

@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 748px) {
+@media screen and (max-width: 775px) {
     .profile-info {
         max-width: 282px;
         flex-direction: column;

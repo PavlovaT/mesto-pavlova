@@ -12,7 +12,7 @@
     white-space: nowrap; 
 }
 
-@media screen and (max-width: 748px) {
+@media screen and (max-width: 775px) {
     .profile-info__description {
         max-width: 282px;
         font-size: 14px;
