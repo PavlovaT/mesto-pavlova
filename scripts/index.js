@@ -17,27 +17,19 @@ function popupToggle () {
     jobInput.value = profileJob.textContent
 }
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+function popupClose () { 
+          popup.classList.remove('popup_open') 
+     }
+
 function formSubmitHandler (evt) {
-     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-//                                                 // Так мы можем определить свою логику отправки.
-//                                                 // О том, как это делать, расскажем позже.
+     evt.preventDefault();
     
-// Вставьте новые значения с помощью textContent
      profileName.textContent = nameInput.value;
      profileJob.textContent = jobInput.value;
 
-// Закрытие попап после сохранения данных
-     function popupClose () { 
-          popup.classList.toggle('popup') 
-     }
-     
-     popupClose()
+    popupClose() 
 }
 
-// // Прикрепляем обработчик к форме:
-// // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 popupOpenBtn.addEventListener('click', popupToggle)
-popupCloseBtn.addEventListener('click', popupToggle)
+popupCloseBtn.addEventListener('click', popupClose)
