@@ -42,19 +42,30 @@ const profileName = document.querySelector('.profile-info__name')
 const profileJob = document.querySelector('.profile-info__description')
 
 const placeArticle = document.querySelector('.elements')
-const popupCreate = document.querySelector('.popup__button-save')
 const imagePopup = document.querySelector('.popup_type_image')
 const placeImage = imagePopup.querySelector('.popup__image')
 const placeTitle = imagePopup.querySelector('.popup__image-title')
+const saveBtn = document.querySelector('.popup__button-save')
+
+const popupProfile = document.querySelector('.popup__form_profile')
+const popupCard = document.querySelector('.popup__form_card')
 
 function openPopup (modal) { //открытие
     modal.classList.add('popup_open')
 }
 
-function popupClose (event) { //закрытие
-    if (event.target.classList.contains('popup__button-close')) {
-      event.target.closest('.popup').classList.remove('popup_open')
-    }
+function popupClose () { //закрытие попапа
+  const activeModal = document.querySelector('.popup_open')
+  if (activeModal) {
+    activeModal.classList.remove('popup_open')
+  }
+}
+
+function popupCloseBtn (evt) { //закрытие попапа через крестик
+  const closeBtn = evt.target;
+  if (closeBtn.classList.contains('popup__button-close')) {
+    popupClose ()
+  }
 }
 
 function popupToggle () { //вставка значений в попап при открытии редактора профиля
@@ -69,7 +80,7 @@ function profileSubmitHandler (evt) { //редактирование профи�
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    popupClose()
+    popupClose(evt)
 }
 
 function createCard (data) { //вставка темплейта
@@ -101,10 +112,10 @@ function profileSubmitCards (evt) { //создание карточки в по�
       link: document.querySelector('.popup__field_name_link').value
     }
 
-    placeArticle.prepend(createCard (data))
+    placeArticle.prepend(createCard(data))
     evt.currentTarget.reset()
 
-    popupClose()
+    popupClose(evt)
 }
 
 function standartCards () { //карточки из массива
@@ -140,11 +151,10 @@ function deleteCard (evt) { //удаление карточки
   }
 }
 
-formElement.addEventListener('submit', profileSubmitCards)
-formElement.addEventListener('submit', profileSubmitHandler)
+popupCard.addEventListener('submit', profileSubmitCards)
+popupProfile.addEventListener('submit', profileSubmitHandler)
 
-root.addEventListener('click', popupClose)
-popupCreate.addEventListener('click', popupClose)
+root.addEventListener('click', popupCloseBtn)
 
 profilePopupBtn.addEventListener('click', popupToggle)
 editPopupBtn.addEventListener('click', () => openPopup (elmPopup))
