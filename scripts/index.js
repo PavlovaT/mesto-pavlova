@@ -43,7 +43,6 @@ const placeArticle = document.querySelector('.elements')
 const imagePopup = document.querySelector('.popup_type_image')
 const placeImage = imagePopup.querySelector('.popup__image')
 const placeTitle = imagePopup.querySelector('.popup__image-title')
-const saveBtn = document.querySelector('.popup__button-save')
 
 const popupProfile = document.querySelector('.popup__form_profile')
 const popupCard = document.querySelector('.popup__form_card')
@@ -64,6 +63,18 @@ function closePopup () { //закрытие попапа
 function closePopupBtn (evt) { //закрытие попапа через крестик
   const closeBtn = evt.target;
   if (closeBtn.classList.contains('popup__button-close')) {
+    closePopup ()
+  }
+}
+
+function closeClickOverlay (evt) {  //закрытие попапа через оверлей
+   if (evt.target === evt.currentTarget) {
+    closePopup ()
+   }
+}
+
+function keyHandler(evt) { //закрытие попапа через Esc
+  if (evt.keyCode === 27) {
     closePopup ()
   }
 }
@@ -155,6 +166,11 @@ popupCard.addEventListener('submit', createProfileCards)
 popupProfile.addEventListener('submit', handlerProfileSubmit)
 
 root.addEventListener('click', closePopupBtn)
+root.addEventListener('keydown', keyHandler)
+
+profilePopup.addEventListener('click', closeClickOverlay)
+elmPopup.addEventListener('click', closeClickOverlay)
+imagePopup.addEventListener('click', closeClickOverlay)
 
 profilePopupBtn.addEventListener('click', openProfilePopup)
 editPopupBtn.addEventListener('click', () => openPopup (elmPopup))

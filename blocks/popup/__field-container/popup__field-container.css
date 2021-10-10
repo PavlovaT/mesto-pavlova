@@ -1,0 +1,12 @@
+.popup__field-container {
+    max-width: 358px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 32px;
+    position: relative;
+}
+
+.popup__field-container:last-of-type {
+    margin-bottom: 0;
+}
