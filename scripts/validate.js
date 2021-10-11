@@ -1,19 +1,21 @@
-const toggleButtonState = (button, isActive, config) => {
+const toggleButtonState = (button, isActive) => {
     if(isActive) {
-        button.classList.remove(config.inactiveButtonClass);
+        button.classList.remove('popup__button-save_type_block');
         button.disabled = false;
+        console.log('active')
     } else {
-        button.classList.add(config.inactiveButtonClass);
+        button.classList.add('popup__button-save_type_block');
         button.disabled = 'disabled';
+        console.log('not active')
     }
 }
 
-function showError (errorElement, inputElement, config) {
+function showError(errorElement, inputElement, config) {
     errorElement.textContent = inputElement.validationMessage
     inputElement.classList.add(config.inputErrorClass)
 }
 
-function hideError (errorElement, inputElement, config) {
+function hideError(errorElement, inputElement, config) {
     errorElement.textContent = ''
     inputElement.classList.remove(config.inputErrorClass)
 }
@@ -22,9 +24,9 @@ const checkInputValidity = (formElement, inputElement, config) => {
     const isInputNotValid = !inputElement.validity.valid
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     if(isInputNotValid) {
-        showError (errorElement, inputElement, config)
+        showError(errorElement, inputElement, config)
     } else {
-        hideError (errorElement, inputElement, config)
+        hideError(errorElement, inputElement, config)
     }
 }
 
@@ -34,10 +36,8 @@ const setEventListers = (formElement, config) => {
 
     Array.from(inputList).forEach(inputElement => {
         inputElement.addEventListener('input', (evt) => {
-            const isFormValid = formElement.checkValidity()
-
-            checkInputValidity (formElement, inputElement, config)
-            toggleButtonState (submitButton, isFormValid, config)
+            checkInputValidity(formElement, inputElement, config)
+            toggleButtonState(submitButton, formElement.checkValidity())
         })
     })
 
@@ -50,7 +50,7 @@ const enableValidation = (config) => {
     const forms = document.querySelectorAll(config.formSelector)
     
     Array.from(forms).forEach(formElement => {
-        setEventListers (formElement, config)
+        setEventListers(formElement, config)
     })
 }
 
