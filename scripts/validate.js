@@ -1,10 +1,10 @@
-const toggleButtonState = (button, isActive) => {
+const toggleButtonState = (button, isActive, config) => {
     if(isActive) {
-        button.classList.remove('popup__button-save_type_block');
+        button.classList.remove(config.inactiveButtonClass);
         button.disabled = false;
         console.log('active')
     } else {
-        button.classList.add('popup__button-save_type_block');
+        button.classList.add(config.inactiveButtonClass);
         button.disabled = 'disabled';
         console.log('not active')
     }
@@ -37,7 +37,7 @@ const setEventListers = (formElement, config) => {
     Array.from(inputList).forEach(inputElement => {
         inputElement.addEventListener('input', (evt) => {
             checkInputValidity(formElement, inputElement, config)
-            toggleButtonState(submitButton, formElement.checkValidity())
+            toggleButtonState(submitButton, formElement.checkValidity(), config)
         })
     })
 
@@ -62,6 +62,5 @@ const validationConfig = {
   inputErrorClass: 'popup__field_state_invalid',
   errorClass: 'error'
 }
-
 
 enableValidation(validationConfig)

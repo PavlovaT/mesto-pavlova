@@ -170,9 +170,10 @@ elmPopup.addEventListener('click', closeClickOverlay)
 imagePopup.addEventListener('click', closeClickOverlay)
 
 profilePopupBtn.addEventListener('click', openProfilePopup)
+
 editPopupBtn.addEventListener('click', () => {
-  openPopup (elmPopup)
+  openPopup(elmPopup)
 
   const submitButton = elmPopup.querySelector('.popup__button-save')
-  toggleButtonState(submitButton, false)
+  toggleButtonState(submitButton, false, validationConfig)
 })
