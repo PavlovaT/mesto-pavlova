@@ -51,6 +51,7 @@ const popupCardLink = document.querySelector('.popup__field_name_link')
 
 function openPopup(modal) { //открытие
   modal.classList.add('popup_open')
+  root.addEventListener('keydown', keyHandler)
 }
 
 function closePopup() { //закрытие попапа
@@ -58,6 +59,7 @@ const activeModal = document.querySelector('.popup_open')
 if (activeModal) {
   activeModal.classList.remove('popup_open')
 }
+root.removeEventListener('keydown', keyHandler)
 }
 
 function closePopupBtn(evt) { //закрытие попапа через крестик
@@ -163,7 +165,6 @@ popupCard.addEventListener('submit', createProfileCards)
 popupProfile.addEventListener('submit', handlerProfileSubmit)
 
 root.addEventListener('click', closePopupBtn)
-root.addEventListener('keydown', keyHandler)
 
 profilePopup.addEventListener('click', closeClickOverlay)
 elmPopup.addEventListener('click', closeClickOverlay)
