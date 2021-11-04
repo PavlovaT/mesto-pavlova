@@ -10,3 +10,9 @@
 .popup__field-container:last-of-type {
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 580px) {
+    .popup__field-container {
+        max-width: 238px;
+    }
+}
