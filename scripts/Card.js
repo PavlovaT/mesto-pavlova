@@ -1,10 +1,15 @@
-export default class Card {
+import {openPopup} from './index.js'
+
+const popup = document.querySelector('.popup_type_image');
+const popupImage = popup.querySelector('.popup__image')
+const popupTitle = popup.querySelector('.popup__image-title')
+
+export class Card {
     constructor(name, link, templateSelector) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
         this._card = null;
-        this._popup = document.querySelector('.popup_type_image');
     }
 
     _getTemplate() {
@@ -38,9 +43,9 @@ export default class Card {
 
     //открытие попапа с картинкой
      _openPopupImage() {
-         this._popup.querySelector('.popup__image').src = this._link;
-         this._popup.querySelector('.popup__image-title').textContent = this._name;
-         this._popup.classList.add('popup_open');
+        openPopup(popup)
+        popupImage.src = this._link;
+        popupTitle.textContent = this._name;
     }
 
     //обработчик событий

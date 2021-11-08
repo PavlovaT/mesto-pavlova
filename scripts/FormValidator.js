@@ -21,8 +21,9 @@ export default class FormValidator {
     }
     
     _hideError(errorElement, inputElement) {
-        errorElement.textContent = ''
-        inputElement.classList.remove(this._inputErrorClass)
+        errorElement.textContent = '';
+        inputElement.classList.remove(this._inputErrorClass);
+        console.log('work hide')
     }
 
     //активная/заблокированная кнопка
@@ -32,16 +33,22 @@ export default class FormValidator {
             button.disabled = false;
             console.log('active')
         } else {
-            button.classList.add(this._inactiveButtonClass);
+            button.classList.add(this._inactiveButtonClass)
             button.disabled = true;
             console.log('not active')
         }
     }
 
-    //добавление блокированной кнопки
-    blockButton(button) {
-        button.classList.add(this._inactiveButtonClass)
-        button.disabled = true;
+    resetValidation() {
+        const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+        const submitButton = this._form.querySelector(this._submitButtonSelector);
+        
+        this._toggleButtonState(submitButton);
+        inputList.forEach((inputElement) => {
+            const errorElement = this._form.querySelector(`#${inputElement.id}-error`); 
+            this._hideError(errorElement, inputElement)
+        })
+        console.log('work')
     }
 
     _checkInputValidity (inputElement) {

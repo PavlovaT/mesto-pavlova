@@ -1,5 +1,6 @@
-import Card from './card.js'
+import {Card} from './card.js'
 import FormValidator from './formValidator.js'
+export {openPopup}
 
 const initialCards = [
   {
@@ -65,6 +66,7 @@ const validatorElmPopup= new FormValidator(validationConfig, elmPopup);
 function openPopup(modal) {
   modal.classList.add('popup_open')
   root.addEventListener('keydown', keyHandler)
+  root.addEventListener('click', closePopupBtn)
 }
 
 //закрытие попапа оставляю
@@ -74,13 +76,13 @@ if (activeModal) {
   activeModal.classList.remove('popup_open')
 }
 root.removeEventListener('keydown', keyHandler)
+root.removeEventListener('click', closePopupBtn)
 }
 
 //закрытие попапа через крестик  оставляю
 function closePopupBtn(evt) {
   const closeBtn = evt.target;
   if (closeBtn.classList.contains('popup__button-close')) {
-    popupCard.reset();
     closePopup ()
   }
 }
@@ -143,15 +145,18 @@ popupCard.addEventListener('submit', function (evt) {
   closePopup()
 })
 
-root.addEventListener('click', closePopupBtn)
+
 profilePopup.addEventListener('click', closeClickOverlay)
 elmPopup.addEventListener('click', closeClickOverlay)
 imagePopup.addEventListener('click', closeClickOverlay)
 popupProfile.addEventListener('submit', handlerProfileSubmit)
-profilePopupBtn.addEventListener('click', openProfilePopup)
+
+profilePopupBtn.addEventListener('click', () => {
+  openProfilePopup()
+  validatorProfilePopup.resetValidation()
+})
 
 editPopupBtn.addEventListener('click', () => {
-  const submitButton = elmPopup.querySelector('.popup__button-save')
   openPopup(elmPopup)
-  validatorElmPopup.blockButton(submitButton)
+  validatorElmPopup.resetValidation()
 })
